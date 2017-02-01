@@ -10,7 +10,8 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958).
 	+ [0.2 Other](#02-other)
 	+ [0.3 Virtual Environment](#03-virtual-environment)
 - [1.0 Background](#10-background)
-
+- [2.0 Matplotlib](#20-matplotlib)
+	+ [2.2 Pyplot](#22-pyplot)
 
 
 ## 0.0 Setup
@@ -28,7 +29,6 @@ We'll soon get into the difference between packages in R and modules in Python. 
 
 ```
 pip install ggplot
-pip install nltk
 pip install seaborn 
 ```
 
@@ -54,13 +54,66 @@ And then, write `backend: TkAgg` in the file. Now you should be set up with your
 
 Cool, now we're ready to start! 
 
+## 1.0 Introduction
+
+Data Visualization is an important aspect of data science. It allows us to showcase the work we've done through visualizations, which can be stagnant or interactive. 
+
+### 1.1 Python Modules
+
+[bokeh](http://bokeh.pydata.org/en/latest/) is an interactive visualization library for modern web browsers presentation. 
+
+[seaborn](http://seaborn.pydata.org/introduction.html#introduction) is a library for making statistical graphics in Python. It's built on top of matplotlib and is tightly integrated with the PyData stack, including support for numpy and pandas data structures and statistical routines from scipy and statsmodels. 
 
 
+``` python
+from urllib.request import urlretrieve
+import pandas as pd
+```
 
-## 1.0 Background
+``` python
+url = "https://gist.githubusercontent.com/jhamrick/cfa18fcd3032ba435ec78a194b1447be/raw/4a4052c56161df8e454a61ab5286a769799c64b8/task_data.csv"
+urlretrieve(url, "task_data.csv")
+```
+
+``` python
+task_data = pd.read_csv("task_data.csv")
+task_data.head()
+```
+
+``` python
+fig, ax = plt.subplots()
+```    
+    # Plot the bars
+``` python
+ax.bar(np.arange(len(tasks)), tasks, align='center')
+```
+    # Show the 50% mark, which would indicate an equal
+    # number of tasks being completed by the robot and the
+    # human. There are 39 tasks total, so 50% is 19.5
+``` python
+ax.hlines(19.5, -0.5, 5.5, linestyle='--', linewidth=1)
+```    
+    # Set a reasonable y-axis limit
+``` python
+ax.set_ylim(0, 40)
+```    
+    # Apply labels to the bars so you know which is which
+``` python
+ax.set_xticks(np.arange(len(tasks)))
+ax.set_xticklabels(["\n".join(x) for x in tasks.index])
+```
+
+``` python
+plt.show()
+```
+
+And we get: 
+
+![alt text](figure1 "Logo Title Text 1")
 
 ## 2.0 Matplotlib
 
+[matplotlib](http://matplotlib.org/) is a 2D python plotting library which allows you to generate plots, histograms, power spectra, bar charts, errorcharts, scatterplots, etc, with just a few lines of code.
 
 ### 2.2 Pyplot
 
@@ -86,11 +139,23 @@ plt.show()
 The `axis()` function in the example above takes a list of `[xmin, xmax, ymin, ymax]` and specifies the viewport of the axes.
 
 
+## 3.0 ggplot
+
+[ggplot](http://ggplot.yhathq.com/) is a plotting system built for making profressional-looking plots quickly with minimal code.
+
+``` python
+from ggplot import *
+
+ggplot(aes(x='date', y='beef'), data=meat) +\
+    geom_line() +\
+    stat_smooth(colour='blue', span=0.2)
+```
 
 
 
-## 3.0 
+## Final Steps
 
+### Resources
 
 
 
