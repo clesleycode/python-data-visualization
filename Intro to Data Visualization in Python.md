@@ -109,7 +109,60 @@ plt.show()
 
 And we get: 
 
-![alt text](figure1 "Logo Title Text 1")
+![alt text](https://github.com/lesley2958/intro-data-viz/blob/master/figure1.png?raw=true "Logo Title Text 1")
+
+``` python
+import seaborn as sns
+```
+
+Now, if we re-run the code, we'll see the different default graph for seaborn:
+``` python
+fig, ax = plt.subplots()
+ax.bar(np.arange(len(tasks)), tasks, align='center')
+ax.hlines(19.5, -0.5, 5.5, linestyle='--', linewidth=1)
+
+ax.set_ylim(0, 40)
+ax.set_xticks(np.arange(len(tasks)))
+ax.set_xticklabels(["\n".join(x) for x in tasks.index])
+plt.show()
+```
+
+And we get: 
+
+![alt text](figure2 "Logo Title Text 1")
+
+The barplot function gives us a legend telling us which color corresponds to which inference type. But, for this plot, I'd actually like to put the inference types under the bars as ticklabels, and then label each group of bars with the robot type. I can accomplish this by splitting the plot into three subplots, which is quite easy to do using Seaborn's FacetGrid:
+
+``` python
+g = sns.FacetGrid(
+	task_data,
+	col="robot",
+	col_order=["fixed", "reactive", "predictive"],
+	sharex=False)
+
+    # Create the bar plot on each subplot
+g.map(
+	sns.barplot,
+	"robot", "robot_tasks", "inference",
+	hue_order=["oracle", "bayesian"])
+
+    # Now I need to draw the 50% lines on each subplot
+    # separately
+axes = np.array(g.axes.flat)
+for ax in axes:
+	ax.hlines(19.5, -0.5, 0.5, linestyle='--', linewidth=1)
+	ax.set_ylim(0, 40)
+
+plt.gcf()
+```
+
+``` python
+plt.show()
+```
+So we get: 
+
+![alt text](figure3 "Logo Title Text 1")
+
 
 ## 2.0 Matplotlib
 
