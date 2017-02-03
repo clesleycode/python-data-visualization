@@ -116,6 +116,7 @@ import seaborn as sns
 ```
 
 Now, if we re-run the code, we'll see the different default graph for seaborn:
+
 ``` python
 fig, ax = plt.subplots()
 ax.bar(np.arange(len(tasks)), tasks, align='center')
@@ -129,7 +130,7 @@ plt.show()
 
 And we get: 
 
-![alt text](figure2 "Logo Title Text 1")
+![alt text](https://github.com/lesley2958/intro-data-viz/blob/master/figure2.png?raw=true "Logo Title Text 1")
 
 The barplot function gives us a legend telling us which color corresponds to which inference type. But, for this plot, I'd actually like to put the inference types under the bars as ticklabels, and then label each group of bars with the robot type. I can accomplish this by splitting the plot into three subplots, which is quite easy to do using Seaborn's FacetGrid:
 
@@ -161,7 +162,7 @@ plt.show()
 ```
 So we get: 
 
-![alt text](figure3 "Logo Title Text 1")
+![alt text](https://github.com/lesley2958/intro-data-viz/blob/master/figure3.png?raw=true "Logo Title Text 1")
 
 
 ## 2.0 Matplotlib
@@ -209,19 +210,6 @@ ggplot(aes(x='date', y='beef'), data=meat) +\
 ## Final Steps
 
 ### Resources
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
  
