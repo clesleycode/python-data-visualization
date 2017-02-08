@@ -1,0 +1,7 @@
+Intro to Data Visualization
+
+Day 1, 6:00pm-9:00pm:
+	Sections 1.0 - 5:0:
+		- Basic Plots (Line, Scatter, Histogram)
+		- Matplotlib
+		- Seaborn & ggplot
