@@ -189,7 +189,6 @@ plt.show()
 The `axis()` function in the example above takes a list of `[xmin, xmax, ymin, ymax]` and specifies the viewport of the axes.
 
 
-
 ## 4.0 Seaborn
 
 
