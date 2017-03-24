@@ -118,7 +118,6 @@ plt.show()
 Alternatively, you might want to plot quantities with 2 positions as data points. To do this, you first have to import the needed libraries, as always. We'll be using the same data from before:
 
 ```  python
-import numpy as np
 import matplotlib.pyplot as plt
 x = [1, 2, 3, 4, 5]
 y = [1, 4, 9, 16, 25]
@@ -155,7 +154,6 @@ Now, we actually make that histogram of the data array and attach a label:
 
 ``` python
 plt.hist(data)
-plt.xlabel("data")
 ```
 
 Lastly, let's look at what we've made: 
