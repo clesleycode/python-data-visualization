@@ -103,12 +103,14 @@ x = [1, 2, 3, 4, 5]
 y = [1, 4, 9, 16, 25]
 ```
 
-Using matplotlib, we can plot a line between plot x and y.
+Using `matplotlib`, we can plot a line between plot x and y.
+
 ```
 plt.plot(x, y)
 ```
 
 And as always, we use the `show()` method to have the visualizations pop up.
+
 ``` python
 plt.show()
 ```
@@ -137,7 +139,7 @@ plt.show()
 
 #### 2.3.3 Histograms
 
-Histograms are very often used in science applications and it's highly likely that you will need to plot them at some point. They are very useful to plot distributions. As before, we'll use numpy and matplotlib.
+Histograms are very often used in science applications and it's highly likely that you will need to plot them at some point. They are very useful to plot distributions. As before, we'll use `numpy` and `matplotlib`.
 
 ``` python
 import numpy as np
@@ -167,7 +169,6 @@ plt.show()
 
 The default customization for matplotlib isn't very appealing or even helpful in data visualization tasks. 
 
-
 ### 3.1 Colors
 
 When there are multiple data points or objects, they have to be able to be differentiated between one another. An easy way to do that is by using different marker styles and colors. You can do this by editing the third parameter to include a letter that indicates the color, such as: 
@@ -175,6 +176,7 @@ When there are multiple data points or objects, they have to be able to be diffe
 ``` python
 plt.plot(x, y, "r")
 ```
+
 This will give you the same line as before, but now it'll be red. 
 
 ### 3.2 Styles
@@ -188,10 +190,6 @@ plt.plot(x,y, "--")
 You can find other linestyles you can use can be found on the [Matplotlib webpage](http://
 matplotlib.sourceforge.net/api/pyplot)
 
-``` python
-plt.plot(x,y, "b*")
-```
-
 With Scatter Plots, you can customize the dots to be squares, pentagons, etc. This will get you the a scatter plot with star markers:
 
 ``` python
@@ -203,29 +201,33 @@ plt.plot(x,y, "*")
 We want to always label the axes of plots to tell users what they're looking at. You can do this in matplotlib, very easily:
 
 If we want to attach a label on the x-axis, we can do that with the `xlabel()` function: 
+
 ``` python
 plt.xlabel("X Axis")
 ```
 
 With a quick modification, we can also do that for the y-axis:
+
 ``` python
 plt.ylabel("Y Axis")
 ```
 
 What good is a visualization without a title to let us know what the visualization is showing? Luckily, matplotlib has a built in function for that:
+
 ``` python
 plt.title("Title Here")
 ```
 
 Lastly, we can even customize the range for the x and y axes: 
+
 ``` python
 plt.xlim(0, 10)
 plt.ylim(0, 10)
 ```
 
-
 ## 4.0 Seaborn
 
+[seaborn](http://seaborn.pydata.org/introduction.html#introduction) is a library for making statistical graphics in Python. It's built on top of matplotlib and is tightly integrated with the PyData stack, including support for numpy and pandas data structures and statistical routines from scipy and statsmodels. 
 
 ``` python
 import matplotlib.pyplot as plt
@@ -248,26 +250,33 @@ task_data.head()
 fig, ax = plt.subplots()
 ```    
 
-Plot the bars
+Plot the bars:
+
 ``` python
 tasks = task_data.groupby(['robot', 'inference'])['robot_tasks'].mean()
 ax.bar(np.arange(len(tasks)), tasks, align='center')
 ```
+
 Show the 50% mark, which would indicate an equal number of tasks being completed by the robot and the human. There are 39 tasks total, so 50% is 19.5
 
 ``` python
 ax.hlines(19.5, -0.5, 5.5, linestyle='--', linewidth=1)
 ```    
+
 Set a reasonable y-axis limit
+
 ``` python
 ax.set_ylim(0, 40)
 ```    
+
 Apply labels to the bars so you know which is which
+
 ``` python
 ax.set_xticks(np.arange(len(tasks)))
 ax.set_xticklabels(["\n".join(x) for x in tasks.index])
 ```
 
+Now let's see our work!
 
 ``` python
 plt.show()
@@ -276,6 +285,8 @@ plt.show()
 And we get: 
 
 ![alt text](https://github.com/lesley2958/intro-data-viz/blob/master/figure1.png?raw=true "Logo Title Text 1")
+
+Now, let's import seaborn and see what happens. 
 
 ``` python
 import seaborn as sns
@@ -326,6 +337,7 @@ plt.gcf()
 ``` python
 plt.show()
 ```
+
 So we get: 
 
 ![alt text](https://github.com/lesley2958/intro-data-viz/blob/master/figure3.png?raw=true "Logo Title Text 1")
@@ -333,6 +345,7 @@ So we get:
 
 ## 5.0 ggplot
 
+Ggplot is yet another module we can use for data visualizations in Python. 
 
 ``` python
 from ggplot import *
